@@ -1,4 +1,4 @@
-from cgi import test
+from traceback import format_tb
 from modulos import *                               #Importe da pasta Modulos
 
 root = tk.Tk()                                      #Definindo variavel para a janela root
@@ -129,6 +129,7 @@ class Application():
         self.tela()
         self.frame()
         self.label()
+        self.entrys()
         self.widgets()
         root.mainloop()
     def tela(self):
@@ -317,8 +318,6 @@ class Application():
         self.valor_mant.configure(font= fontes[4])
         self.valor_mant.place(anchor="center", relx= 0.8, rely=0.805)
         ##########################################################################
-
-
         #Label para valor TOTAL
         self.total = Label(self.frame1, text="Total: R$00,00", background= cores[0])
         self.total.configure(font= fontes[2])
@@ -330,11 +329,125 @@ class Application():
         self.nota.place(anchor="center", relx= 0.5, rely=0.92)
         ##########################################################################
 
+                            ###Área de HORTIFRUTI
+
+        #Labels de numeros para primeira seção
+        self.valor1_hortifruti = Label(self.frame1, text= 0, background= cores[3])
+        self.valor1_hortifruti.configure(font= fontes[5])
+        self.valor1_hortifruti.place(anchor="center", relx= 0.26, rely=0.3)
+
+        self.valor2_hortifruti = Label(self.frame1, text= 0, background= cores[3])
+        self.valor2_hortifruti.configure(font= fontes[5])
+        self.valor2_hortifruti.place(anchor="center", relx= 0.26, rely=0.362)
+
+        self.valor3_hortifruti = Label(self.frame1, text= 0, background= cores[3])
+        self.valor3_hortifruti.configure(font= fontes[5])
+        self.valor3_hortifruti.place(anchor="center", relx= 0.26, rely=0.424)
+
+        self.valor4_hortifruti = Label(self.frame1, text= 0, background= cores[3])
+        self.valor4_hortifruti.configure(font= fontes[5])
+        self.valor4_hortifruti.place(anchor="center", relx= 0.26, rely=0.486)
+
+        self.valor5_hortifruti = Label(self.frame1, text= 0, background= cores[3])
+        self.valor5_hortifruti.configure(font= fontes[5])
+        self.valor5_hortifruti.place(anchor="center", relx= 0.26, rely=0.548)
+
+        self.valor6_hortifruti = Label(self.frame1, text= 0, background= cores[3])
+        self.valor6_hortifruti.configure(font= fontes[5])
+        self.valor6_hortifruti.place(anchor="center", relx= 0.26, rely=0.61)
+
+        self.valor7_hortifruti = Label(self.frame1, text= 0, background= cores[3])
+        self.valor7_hortifruti.configure(font= fontes[5])
+        self.valor7_hortifruti.place(anchor="center", relx= 0.26, rely=0.672)
+
+        self.valor8_hortifruti = Label(self.frame1, text= 0, background= cores[3])
+        self.valor8_hortifruti.configure(font= fontes[5])
+        self.valor8_hortifruti.place(anchor="center", relx= 0.26, rely=0.734)
+        ##########################################################################
+
+                            ###Área de HIGIENE
+
+        #Labels de numeros para segunda seção
+        self.valor1_higiene = Label(self.frame1, text= 0, background= cores[3])
+        self.valor1_higiene.configure(font= fontes[5])
+        self.valor1_higiene.place(anchor="center", relx= 0.57, rely=0.3)
+
+        self.valor2_higiene = Label(self.frame1, text= 0, background= cores[3])
+        self.valor2_higiene.configure(font= fontes[5])
+        self.valor2_higiene.place(anchor="center", relx= 0.57, rely=0.362)
+
+        self.valor3_higiene = Label(self.frame1, text= 0, background= cores[3])
+        self.valor3_higiene.configure(font= fontes[5])
+        self.valor3_higiene.place(anchor="center", relx= 0.57, rely=0.424)
+
+        self.valor4_higiene = Label(self.frame1, text= 0, background= cores[3])
+        self.valor4_higiene.configure(font= fontes[5])
+        self.valor4_higiene.place(anchor="center", relx= 0.57, rely=0.486)
+
+        self.valor5_higiene = Label(self.frame1, text= 0, background= cores[3])
+        self.valor5_higiene.configure(font= fontes[5])
+        self.valor5_higiene.place(anchor="center", relx= 0.57, rely=0.548)
+
+        self.valor6_higiene = Label(self.frame1, text= 0, background= cores[3])
+        self.valor6_higiene.configure(font= fontes[5])
+        self.valor6_higiene.place(anchor="center", relx= 0.57, rely=0.61)
+
+        self.valor7_higiene = Label(self.frame1, text= 0, background= cores[3])
+        self.valor7_higiene.configure(font= fontes[5])
+        self.valor7_higiene.place(anchor="center", relx= 0.57, rely=0.672)
+
+        self.valor8_higiene = Label(self.frame1, text= 0, background= cores[3])
+        self.valor8_higiene.configure(font= fontes[5])
+        self.valor8_higiene.place(anchor="center", relx= 0.57, rely=0.734)
+        ##########################################################################
+
+                            ###Área de MANTIMENTOS
+        
+        #Labels de numeros para terceira seção
+        self.valor1_mantimentos = Label(self.frame1, text= 0, background= cores[3])
+        self.valor1_mantimentos.configure(font= fontes[5])
+        self.valor1_mantimentos.place(anchor="center", relx=0.86, rely=0.3)
+
+        self.valor2_mantimentos = Label(self.frame1, text= 0, background= cores[3])
+        self.valor2_mantimentos.configure(font= fontes[5])
+        self.valor2_mantimentos.place(anchor="center", relx= 0.86, rely=0.362)
+
+        self.valor3_mantimentos = Label(self.frame1, text= 0, background= cores[3])
+        self.valor3_mantimentos.configure(font= fontes[5])
+        self.valor3_mantimentos.place(anchor="center", relx= 0.86, rely=0.424)
+
+        self.valor4_mantimentos = Label(self.frame1, text= 0, background= cores[3])
+        self.valor4_mantimentos.configure(font= fontes[5])
+        self.valor4_mantimentos.place(anchor="center", relx= 0.86, rely=0.486)
+
+        self.valor5_mantimentos = Label(self.frame1, text= 0, background= cores[3])
+        self.valor5_mantimentos.configure(font= fontes[5])
+        self.valor5_mantimentos.place(anchor="center", relx= 0.86, rely=0.548)
+
+        self.valor6_mantimentos = Label(self.frame1, text= 0, background= cores[3])
+        self.valor6_mantimentos.configure(font= fontes[5])
+        self.valor6_mantimentos.place(anchor="center", relx= 0.86, rely=0.61)
+
+        self.valor7_mantimentos = Label(self.frame1, text= 0, background= cores[3])
+        self.valor7_mantimentos.configure(font= fontes[5])
+        self.valor7_mantimentos.place(anchor="center", relx= 0.86, rely=0.672)
+
+        self.valor8_mantimentos = Label(self.frame1, text= 0, background= cores[3])
+        self.valor8_mantimentos.configure(font= fontes[5])
+        self.valor8_mantimentos.place(anchor="center", relx= 0.86, rely=0.734)
+
+        ##########################################################################
 
         #Label para data e hora atual
         self.datetime = Label(self.frame1, text= data, bg= cores[0])
         self.datetime.place(anchor='center', relx=0.8, rely=0.05)
         self.datetime.configure(font= fontes[3])
+    
+    def entrys(self):
+        self.nome_entry = Entry(self.frame1, bd= 0, bg= cores[2])
+        self.nome_entry.configure(font= fontes[5])
+        self.nome_entry.place(anchor='center', relx = 0.22, rely= 0.129, relwidth= 0.18)
+        pass
 
     def widgets(self):
         ##Botão para limpar seleção
@@ -347,7 +460,8 @@ class Application():
         
         ##########################################################################
 
-        #Botões de Mais (+)
+                                    #Botões de Mais (+)
+        #Botões da primeira seção
         self.mais1 = Button(self.frame1, text="+", background=cores[1])
         self.mais1.place(anchor="center", relx= 0.24, rely= 0.3, relheight=0.03, relwidth=0.016)
         
@@ -373,7 +487,7 @@ class Application():
         self.mais8.place(anchor="center", relx= 0.24, rely= 0.734, relheight=0.03, relwidth=0.016)
 
 
-        
+        #Botões da segunda seção
         self.mais9 = Button(self.frame1, text="+", background=cores[1])
         self.mais9.place(anchor="center", relx= 0.55, rely= 0.3, relheight=0.03, relwidth=0.016)
     
@@ -399,7 +513,7 @@ class Application():
         self.mais16.place(anchor="center", relx= 0.55, rely= 0.734, relheight=0.03, relwidth=0.016)
 
 
-        
+        #Botões da terceira seção
         self.mais17 = Button(self.frame1, text="+", background=cores[1])
         self.mais17.place(anchor="center", relx= 0.84, rely= 0.3, relheight=0.03, relwidth=0.016)
         
@@ -423,5 +537,85 @@ class Application():
         
         self.mais24 = Button(self.frame1, text="+", background=cores[1])
         self.mais24.place(anchor="center", relx= 0.84, rely= 0.734, relheight=0.03, relwidth=0.016)
+        
+        ##########################################################################
+
+                                    #Botões de Mais (-)
+        #Botões da primeira seção
+        self.menos1 = Button(self.frame1, text="-", background=cores[1])
+        self.menos1.place(anchor="center", relx= 0.28, rely= 0.3, relheight=0.03, relwidth=0.016)
+        
+        self.menos2 = Button(self.frame1, text="-", background=cores[1])
+        self.menos2.place(anchor="center", relx= 0.28, rely= 0.362, relheight=0.03, relwidth=0.016)
+        
+        self.menos3 = Button(self.frame1, text="-", background=cores[1])
+        self.menos3.place(anchor="center", relx= 0.28, rely= 0.424, relheight=0.03, relwidth=0.016)
+        
+        self.menos4 = Button(self.frame1, text="-", background=cores[1])
+        self.menos4.place(anchor="center", relx= 0.28, rely= 0.486, relheight=0.03, relwidth=0.016)
+        
+        self.menos5 = Button(self.frame1, text="-", background=cores[1])
+        self.menos5.place(anchor="center", relx= 0.28, rely= 0.548, relheight=0.03, relwidth=0.016)
+        
+        self.menos6 = Button(self.frame1, text="-", background=cores[1])
+        self.menos6.place(anchor="center", relx= 0.28, rely= 0.61, relheight=0.03, relwidth=0.016)
+        
+        self.menos7 = Button(self.frame1, text="-", background=cores[1])
+        self.menos7.place(anchor="center", relx= 0.28, rely= 0.672, relheight=0.03, relwidth=0.016)
+        
+        self.menos8 = Button(self.frame1, text="-", background=cores[1])
+        self.menos8.place(anchor="center", relx= 0.28, rely= 0.734, relheight=0.03, relwidth=0.016)
+
+
+        #Botões da segunda seção
+        self.menos9 = Button(self.frame1, text="-", background=cores[1])
+        self.menos9.place(anchor="center", relx= 0.59, rely= 0.3, relheight=0.03, relwidth=0.016)
+    
+        self.menos10 = Button(self.frame1, text="-", background=cores[1])
+        self.menos10.place(anchor="center", relx= 0.59, rely= 0.362, relheight=0.03, relwidth=0.016)
+        
+        self.menos11 = Button(self.frame1, text="-", background=cores[1])
+        self.menos11.place(anchor="center", relx= 0.59, rely= 0.424, relheight=0.03, relwidth=0.016)
+        
+        self.menos12 = Button(self.frame1, text="-", background=cores[1])
+        self.menos12.place(anchor="center", relx= 0.59, rely= 0.486, relheight=0.03, relwidth=0.016)
+        
+        self.menos13 = Button(self.frame1, text="-", background=cores[1])
+        self.menos13.place(anchor="center", relx= 0.59, rely= 0.548, relheight=0.03, relwidth=0.016)
+        
+        self.menos14 = Button(self.frame1, text="-", background=cores[1])
+        self.menos14.place(anchor="center", relx= 0.59, rely= 0.61, relheight=0.03, relwidth=0.016)
+        
+        self.menos15 = Button(self.frame1, text="-", background=cores[1])
+        self.menos15.place(anchor="center", relx= 0.59, rely= 0.672, relheight=0.03, relwidth=0.016)
+        
+        self.menos16 = Button(self.frame1, text="-", background=cores[1])
+        self.menos16.place(anchor="center", relx= 0.59, rely= 0.734, relheight=0.03, relwidth=0.016)
+
+
+        #Botões da terceira seção
+        self.menos17 = Button(self.frame1, text="-", background=cores[1])
+        self.menos17.place(anchor="center", relx= 0.88, rely= 0.3, relheight=0.03, relwidth=0.016)
+        
+        self.menos18 = Button(self.frame1, text="-", background=cores[1])
+        self.menos18.place(anchor="center", relx= 0.88, rely= 0.362, relheight=0.03, relwidth=0.016)
+        
+        self.menos19 = Button(self.frame1, text="-", background=cores[1])
+        self.menos19.place(anchor="center", relx= 0.88, rely= 0.424, relheight=0.03, relwidth=0.016)
+        
+        self.menos20 = Button(self.frame1, text="-", background=cores[1])
+        self.menos20.place(anchor="center", relx= 0.88, rely= 0.486, relheight=0.03, relwidth=0.016)
+        
+        self.menos21 = Button(self.frame1, text="-", background=cores[1])
+        self.menos21.place(anchor="center", relx= 0.88, rely= 0.548, relheight=0.03, relwidth=0.016)
+        
+        self.menos22 = Button(self.frame1, text="-", background=cores[1])
+        self.menos22.place(anchor="center", relx= 0.88, rely= 0.61, relheight=0.03, relwidth=0.016)
+        
+        self.menos23 = Button(self.frame1, text="-", background=cores[1])
+        self.menos23.place(anchor="center", relx= 0.88, rely= 0.672, relheight=0.03, relwidth=0.016)
+        
+        self.menos24 = Button(self.frame1, text="-", background=cores[1])
+        self.menos24.place(anchor="center", relx= 0.88, rely= 0.734, relheight=0.03, relwidth=0.016)
 
 Application()
