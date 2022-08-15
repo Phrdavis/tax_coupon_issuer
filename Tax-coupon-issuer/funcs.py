@@ -1,5 +1,10 @@
+
 from modulos import *
 from listas import *
+
+    
+def mm2p(milimetros): #converte milimetros em pontos
+    return milimetros/0.352777
 
 class funcs(): 
         ##########################################################################
@@ -24,11 +29,74 @@ class funcs():
             ##########################################################################
 
                                 ###Função para geração de PFD###
-    def gerar_pdf(args):
+    def gerar_numero_nota(self):
+        global nota
+        n = [
+            '1',
+            '2',
+            '3',
+            '4',
+            '5',
+            '6',
+            '7',
+            '8',
+            '9',
+            '0'
+        ]
+        nota = ''
+
+        for i in range (5):
+            nota += random.choice(n)
+                                
+    def mm2p(milimetros): #converte milimetros em pontos
+        return milimetros/0.352777
+
+    def gerar_pdf(self):
+        global data, nota, soma1, soma2, soma3, soma_total, nome_entry, cpf_entry, telefone_entry
+        self.gerar_numero_nota()
+
+        texto_pdf = ['TAX COUPON ISSUER',
+                    'RUA XXXXXXX, XXX - XXXXXXXXXXXXXXXX', 
+                    'CNPJ: XX.XXX.XXX/XXXX-XX',
+                    self.nome_entry.get(),
+                    self.cpf_entry.get(),
+                    self.telefone_entry.get(),
+                    '---------------------------------------------------------------------------------------------------', 
+                    data,
+                    '',
+                    'CUPOM FISCAL',
+                    f'ITEM CÓDIGO: {nota}',
+                    '---------------------------------------------------------------------------------------------------', 
+                    'VALOR POR SEÇÃO',
+                    f'Hortifruti ------------------------------------------------- R${soma1:.2f}',
+                    f'Higiene ---------------------------------------------------- R${soma2:.2f}',
+                    f'Mantimentos ------------------------------------------------ R${soma3:.2f}',
+                    '---------------------------------------------------------------------------------------------------', 
+                    f'TOTAL               R$              {soma_total:.2f}',
+                    f'Dinheiro                                                 {soma_total:.2f}',
+                    '---------------------------------------------------------------------------------------------------',
+                    'E-mail: davipi_sou@hotmail.com',
+                    'Github: https://github.com/Phrdavis',
+                    'Linkedin: https://www.linkedin.com/in/phrdavis/',
+                    'Davi Pinheiro de Souza', 
+                    '---------------------------------------------------------------------------------------------------', 
+                    'Versão beta 01.00'
+                    ]
+        font_style = 'Helvetica'
+        font_size = [15,15,15,15,15,15,15,15,5,30,20,15,20,15,15,15,15,20,15,15,15,15,15,15,15,15]
+        eixo = 270
+
         cnv = canvas.Canvas("Nota Fiscal.pdf")
-        cnv.drawString(150,450,"uepa")
+
+        i = int(0)
+        for txt in texto_pdf:
+            cnv.setFont(font_style,font_size[i])
+            cnv.drawCentredString(mm2p(105),mm2p(eixo), txt)
+            eixo -= 10
+            i += 1
+
         cnv.save()
-        return 0
+
             ##########################################################################
 
                                 ###Função para aumentar contador###
@@ -52,7 +120,7 @@ class funcs():
         #Label para valor TOTAL
         self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
         self.total.configure(font= fontes[2])
-        self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+        self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def aumentar2(self):
         global valor2, pre1, soma1, soma_total
@@ -71,7 +139,7 @@ class funcs():
         #Label para valor TOTAL
         self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
         self.total.configure(font= fontes[2])
-        self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+        self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def aumentar3(self):
         global valor3, pre1, soma1, soma_total
@@ -90,7 +158,7 @@ class funcs():
         #Label para valor TOTAL
         self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
         self.total.configure(font= fontes[2])
-        self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+        self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def aumentar4(self):
         global valor4, pre1, soma1, soma_total
@@ -109,7 +177,7 @@ class funcs():
         #Label para valor TOTAL
         self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
         self.total.configure(font= fontes[2])
-        self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+        self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def aumentar5(self):
         global valor5, pre1, soma1, soma_total
@@ -128,7 +196,7 @@ class funcs():
         #Label para valor TOTAL
         self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
         self.total.configure(font= fontes[2])
-        self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+        self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def aumentar6(self):
         global valor6, pre1, soma1, soma_total
@@ -147,7 +215,7 @@ class funcs():
         #Label para valor TOTAL
         self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
         self.total.configure(font= fontes[2])
-        self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+        self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def aumentar7(self):
         global valor7, pre1, soma1, soma_total
@@ -166,7 +234,7 @@ class funcs():
         #Label para valor TOTAL
         self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
         self.total.configure(font= fontes[2])
-        self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+        self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def aumentar8(self):
         global valor8, pre1, soma1, soma_total
@@ -185,7 +253,7 @@ class funcs():
         #Label para valor TOTAL
         self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
         self.total.configure(font= fontes[2])
-        self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+        self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
         ##########################################################################
 
                                     ###Área de HIGIENE
@@ -206,7 +274,7 @@ class funcs():
         #Label para valor TOTAL
         self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
         self.total.configure(font= fontes[2])
-        self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+        self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def aumentar10(self):
         global valor10, pre2, soma2, soma_total
@@ -225,7 +293,7 @@ class funcs():
         #Label para valor TOTAL
         self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
         self.total.configure(font= fontes[2])
-        self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+        self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def aumentar11(self):
         global valor11, pre2, soma2, soma_total
@@ -244,7 +312,7 @@ class funcs():
         #Label para valor TOTAL
         self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
         self.total.configure(font= fontes[2])
-        self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+        self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def aumentar12(self):
         global valor12, pre2, soma2, soma_total
@@ -263,7 +331,7 @@ class funcs():
         #Label para valor TOTAL
         self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
         self.total.configure(font= fontes[2])
-        self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+        self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def aumentar13(self):
         global valor13, pre2, soma2, soma_total
@@ -282,7 +350,7 @@ class funcs():
         #Label para valor TOTAL
         self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
         self.total.configure(font= fontes[2])
-        self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+        self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def aumentar14(self):
         global valor14, pre2, soma2, soma_total
@@ -301,7 +369,7 @@ class funcs():
         #Label para valor TOTAL
         self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
         self.total.configure(font= fontes[2])
-        self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+        self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def aumentar15(self):
         global valor15, pre2, soma2, soma_total
@@ -320,7 +388,7 @@ class funcs():
         #Label para valor TOTAL
         self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
         self.total.configure(font= fontes[2])
-        self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+        self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def aumentar16(self):
         global valor16, pre2, soma2, soma_total
@@ -339,7 +407,7 @@ class funcs():
         #Label para valor TOTAL
         self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
         self.total.configure(font= fontes[2])
-        self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+        self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
         ##########################################################################
         
@@ -362,7 +430,7 @@ class funcs():
         #Label para valor TOTAL
         self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
         self.total.configure(font= fontes[2])
-        self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+        self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def aumentar18(self):
         global valor18, pre3, soma3, soma_total
@@ -381,7 +449,7 @@ class funcs():
         #Label para valor TOTAL
         self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
         self.total.configure(font= fontes[2])
-        self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+        self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def aumentar19(self):
         global valor19, pre3, soma3, soma_total
@@ -400,7 +468,7 @@ class funcs():
         #Label para valor TOTAL
         self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
         self.total.configure(font= fontes[2])
-        self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+        self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def aumentar20(self):
         global valor20, pre3, soma3, soma_total
@@ -419,7 +487,7 @@ class funcs():
         #Label para valor TOTAL
         self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
         self.total.configure(font= fontes[2])
-        self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+        self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def aumentar21(self):
         global valor21, pre3, soma3, soma_total
@@ -438,7 +506,7 @@ class funcs():
         #Label para valor TOTAL
         self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
         self.total.configure(font= fontes[2])
-        self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+        self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def aumentar22(self):
         global valor22, pre3, soma3, soma_total
@@ -457,7 +525,7 @@ class funcs():
         #Label para valor TOTAL
         self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
         self.total.configure(font= fontes[2])
-        self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+        self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def aumentar23(self):
         global valor23, pre3, soma3, soma_total
@@ -476,7 +544,7 @@ class funcs():
         #Label para valor TOTAL
         self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
         self.total.configure(font= fontes[2])
-        self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+        self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def aumentar24(self):
         global valor24, pre3, soma3, soma_total
@@ -495,7 +563,7 @@ class funcs():
         #Label para valor TOTAL
         self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
         self.total.configure(font= fontes[2])
-        self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+        self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
             ##########################################################################
 
                                 ###Função para diminuir contador###
@@ -520,7 +588,7 @@ class funcs():
             #Label para valor TOTAL
             self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
             self.total.configure(font= fontes[2])
-            self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+            self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def diminuir2(self):
         global valor2, pre1, soma1, soma_total
@@ -540,7 +608,7 @@ class funcs():
             #Label para valor TOTAL
             self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
             self.total.configure(font= fontes[2])
-            self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+            self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def diminuir3(self):
         global valor3, pre1, soma1, soma_total
@@ -560,7 +628,7 @@ class funcs():
             #Label para valor TOTAL
             self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
             self.total.configure(font= fontes[2])
-            self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+            self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def diminuir4(self):
         global valor4, pre1, soma1, soma_total
@@ -580,7 +648,7 @@ class funcs():
             #Label para valor TOTAL
             self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
             self.total.configure(font= fontes[2])
-            self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+            self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def diminuir5(self):
         global valor5, pre1, soma1, soma_total
@@ -600,7 +668,7 @@ class funcs():
             #Label para valor TOTAL
             self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
             self.total.configure(font= fontes[2])
-            self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+            self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def diminuir6(self):
         global valor6, pre1, soma1, soma_total
@@ -620,7 +688,7 @@ class funcs():
             #Label para valor TOTAL
             self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
             self.total.configure(font= fontes[2])
-            self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+            self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def diminuir7(self):
         global valor7, pre1, soma1, soma_total
@@ -640,7 +708,7 @@ class funcs():
             #Label para valor TOTAL
             self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
             self.total.configure(font= fontes[2])
-            self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+            self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def diminuir8(self):
         global valor8, pre1, soma1, soma_total
@@ -660,7 +728,7 @@ class funcs():
             #Label para valor TOTAL
             self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
             self.total.configure(font= fontes[2])
-            self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+            self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
         ##########################################################################
 
                             ###Área de HIGIENE
@@ -682,7 +750,7 @@ class funcs():
             #Label para valor TOTAL
             self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
             self.total.configure(font= fontes[2])
-            self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+            self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def diminuir10(self):
         global valor10, pre2, soma2, soma_total
@@ -702,7 +770,7 @@ class funcs():
             #Label para valor TOTAL
             self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
             self.total.configure(font= fontes[2])
-            self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+            self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def diminuir11(self):
         global valor11, pre2, soma2, soma_total
@@ -722,7 +790,7 @@ class funcs():
             #Label para valor TOTAL
             self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
             self.total.configure(font= fontes[2])
-            self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+            self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def diminuir12(self):
         global valor12, pre2, soma2, soma_total
@@ -742,7 +810,7 @@ class funcs():
             #Label para valor TOTAL
             self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
             self.total.configure(font= fontes[2])
-            self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+            self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def diminuir13(self):
         global valor13, pre2, soma2, soma_total
@@ -762,7 +830,7 @@ class funcs():
             #Label para valor TOTAL
             self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
             self.total.configure(font= fontes[2])
-            self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+            self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def diminuir14(self):
         global valor14, pre2, soma2, soma_total
@@ -782,7 +850,7 @@ class funcs():
             #Label para valor TOTAL
             self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
             self.total.configure(font= fontes[2])
-            self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+            self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def diminuir15(self):
         global valor15, pre2, soma2, soma_total
@@ -802,7 +870,7 @@ class funcs():
             #Label para valor TOTAL
             self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
             self.total.configure(font= fontes[2])
-            self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+            self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def diminuir16(self):
         global valor16, pre2, soma2, soma_total
@@ -822,7 +890,7 @@ class funcs():
             #Label para valor TOTAL
             self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
             self.total.configure(font= fontes[2])
-            self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+            self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
         ##########################################################################
         
@@ -846,7 +914,7 @@ class funcs():
             #Label para valor TOTAL
             self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
             self.total.configure(font= fontes[2])
-            self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+            self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def diminuir18(self):
         global valor18, pre3, soma3, soma_total
@@ -866,7 +934,7 @@ class funcs():
             #Label para valor TOTAL
             self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
             self.total.configure(font= fontes[2])
-            self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+            self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def diminuir19(self):
         global valor19, pre3, soma3, soma_total
@@ -886,7 +954,7 @@ class funcs():
             #Label para valor TOTAL
             self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
             self.total.configure(font= fontes[2])
-            self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+            self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def diminuir20(self):
         global valor20, pre3, soma3, soma_total
@@ -906,7 +974,7 @@ class funcs():
             #Label para valor TOTAL
             self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
             self.total.configure(font= fontes[2])
-            self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+            self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def diminuir21(self):
         global valor21, pre3, soma3, soma_total
@@ -926,7 +994,7 @@ class funcs():
             #Label para valor TOTAL
             self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
             self.total.configure(font= fontes[2])
-            self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+            self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def diminuir22(self):
         global valor22, pre3, soma3, soma_total
@@ -946,7 +1014,7 @@ class funcs():
             #Label para valor TOTAL
             self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
             self.total.configure(font= fontes[2])
-            self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+            self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def diminuir23(self):
         global valor23, pre3, soma3, soma_total
@@ -966,7 +1034,7 @@ class funcs():
             #Label para valor TOTAL
             self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
             self.total.configure(font= fontes[2])
-            self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+            self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def diminuir24(self):
         global valor24, pre3, soma3, soma_total
@@ -986,7 +1054,7 @@ class funcs():
             #Label para valor TOTAL
             self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
             self.total.configure(font= fontes[2])
-            self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+            self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
 
     def limpar(self):
         global soma1, soma2, soma3, soma_total, valor1, valor2, valor3, valor4, valor5, valor6, valor7, valor8, valor9, valor10, valor11, valor12, valor13, valor14, valor15, valor16, valor17, valor18, valor19, valor20, valor21, valor22, valor23, valor24
@@ -1116,7 +1184,6 @@ class funcs():
         self.valor8_mantimentos.place(anchor="center", relx= 0.86, rely=0.734)
         self.valor8_mantimentos.configure(font= fontes[5])
         
-        
             
         soma1 = 0
         soma2 = 0
@@ -1138,4 +1205,7 @@ class funcs():
         #Label para valor TOTAL
         self.total = Label(self.frame1, text=f"Total: R${soma_total:.2f}", background= cores[0])
         self.total.configure(font= fontes[2])
-        self.total.place(anchor="center", relx= 0.5, rely=0.88, relwidth=0.2)
+        self.total.place(anchor="center", relx= 0.5, rely=0.90, relwidth=0.2)
+
+    
+

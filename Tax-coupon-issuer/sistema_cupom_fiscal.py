@@ -312,12 +312,7 @@ class Application(funcs):
         #Label para valor TOTAL
         self.total = Label(self.frame1, text="Total: R$00,00", background= cores[0])
         self.total.configure(font= fontes[2])
-        self.total.place(anchor="center", relx= 0.5, rely=0.88)
-
-        #Label para valro NOTA
-        self.nota = Label(self.frame1, text="Nota: 00000", background= cores[0])
-        self.nota.configure(font= fontes[4])
-        self.nota.place(anchor="center", relx= 0.5, rely=0.92)
+        self.total.place(anchor="center", relx= 0.5, rely=0.90)
 
         ##########################################################################
 
@@ -338,7 +333,7 @@ class Application(funcs):
         self.cpf_entry.configure(font= fontes[5])
         self.cpf_entry.place(anchor='center', relx = 0.52, rely= 0.129, relwidth= 0.18)
 
-        ##########################################################################
+        ##########################################################################'
         #Entry para cadastro de Telefone
         self.telefone_entry = Entry(self.frame1, bd= 0, bg= cores[2])
         self.telefone_entry.configure(font= fontes[5])
@@ -347,12 +342,12 @@ class Application(funcs):
 
     def widgets(self):
         ##Botão para limpar seleção
-        self.limpar = Button(self.frame1, image= bot[0], bg= cores[0], bd= 0, relief= FLAT, command= self.limpar)
-        self.limpar.place(anchor= "center", relx= 0.2, rely= 0.88, relheight= 0.1, relwidth= 0.125)
+        self.bt_limpar = Button(self.frame1, image= bot[0], bg= cores[0], bd= 0, relief= FLAT, command= self.limpar)
+        self.bt_limpar.place(anchor= "center", relx= 0.2, rely= 0.88, relheight= 0.1, relwidth= 0.125)
 
         ##Botão para emitir Nota Fiscal
-        self.emitir = Button(self.frame1, image= bot[1], bg= cores[0], bd= 0, relief= FLAT)
-        self.emitir.place(anchor= "center", relx= 0.8, rely= 0.88, relheight= 0.1, relwidth= 0.125)
+        self.bt_emitir = Button(self.frame1, image= bot[1], bg= cores[0], bd= 0, relief= FLAT, command= self.gerar_pdf)
+        self.bt_emitir.place(anchor= "center", relx= 0.8, rely= 0.88, relheight= 0.1, relwidth= 0.125)
         
         ##########################################################################
 

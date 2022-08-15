@@ -3,6 +3,7 @@ from modulos import *
 root = tk.Tk()                                      #Definindo variavel para a janela root
 get_dir = os.path.dirname(__file__)                 #Definindo variavel para diretorio do arquivo
 data = datetime.now().strftime('%d/%m/%Y %H:%M')    #Definindo variavel para data e hora atuais
+nota = ''
 
 
 
